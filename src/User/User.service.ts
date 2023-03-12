@@ -1,19 +1,23 @@
 import { User } from "./User.type";
 import prisma from "../config/Prisma";
+
 function User(){
 
     async function list(){
 
         const result = await prisma.user.findMany()
-        console.log(result)
         if(result){
             return result
         }
-
         return []
     }
 
-    function create(data: User){}
+    async function create(data: User){
+        const result = await prisma.user.create({
+            data:data
+        })
+        return result
+    }
 
     function remove(id: string){}
 
