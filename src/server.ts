@@ -1,11 +1,11 @@
 import express from "express"
+import route from "./routes"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app = express()
 
-app.get("/", (req, res)=>{
+app.use(route)
 
-    res.send(",dclcddf")
-
-})
-
-app.listen(3030, ()=> console.log("http://localhost:3030"))
+app.listen(process.env.ENV_SERVER_PORT || 3030, ()=> console.log(`http://localhost:${process.env.ENV_SERVER_PORT || "3030"}`))
