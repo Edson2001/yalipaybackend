@@ -1,25 +1,39 @@
 import { User } from "./User.type";
 import prisma from "../config/Prisma";
+
 function User(){
 
     async function list(){
 
         const result = await prisma.user.findMany()
-        console.log(result)
         if(result){
             return result
         }
-
         return []
     }
 
-    function create(data: User){}
+    async function create(data: User){
+        const result = await prisma.user.create({
+            data:data
+        })
+        return result
+    }
 
-    function remove(id: string){}
+    function remove(userID: string){}
 
-    function find(id: string){}
+    async function find(userID: string){
 
-    function update(id: string, body: User){}
+        const result = await prisma.user.findUnique({
+            where:{
+                userID
+            }
+        })
+
+        return result
+
+    }
+
+    function update(userID: string, body: User){}
 
     return {
         list, 
