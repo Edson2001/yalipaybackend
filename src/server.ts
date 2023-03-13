@@ -1,11 +1,11 @@
-import express from "express"
-import route from "./routes"
-import dotenv from "dotenv"
+import http from 'http';
 
-dotenv.config()
+import app from './app';
 
-const app = express()
-app.use(express.json())
-app.use(route)
+const server = http.createServer(app);
 
-app.listen(process.env.ENV_SERVER_PORT || 3030, ()=> console.log(`http://localhost:${process.env.ENV_SERVER_PORT || "3030"}`))
+const PORT = process.env.PORT || 3030;
+
+server.listen(PORT, () => {
+  console.log(` === SERVER IS RUNNING ON PORT [${PORT}] === `);
+});

@@ -1,23 +1,11 @@
 import { Router } from "express";
-import UserController from "../User/User.controller";
-import AccountController from "../Accout/Account.controller";
+import usersRoutes from '../modules/users/http/users.routes';
+import baseRoute from './baseRoute';
 
-const route = Router()
-
-const user = UserController()
-const account = AccountController()
-
-route.get("/", (req, res)=>{
-    return res.send("API ON")
-})
-
-route.get('/user', user.list)
-route.get("/user/:id", user.find)
-route.post("/user", user.create)
-
+const routes = Router()
 
 //route.post("/account", account.create)
-route.get("/account/:id", account.find)
+routes.use(baseRoute);
+routes.use(usersRoutes);
 
-
-export default route
+export default routes;
