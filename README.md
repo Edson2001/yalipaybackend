@@ -1,10 +1,10 @@
 # yalipaybackend
-# yalipay
+
 Criação do app mobile YaliPay apresentando pela comunidade openSource Angolana.
 
 ## Tecnologias
 2. Node.js
-1. Ttpescript
+1. Typescript
 2. Docker
 3. Prisma
 
